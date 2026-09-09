@@ -1,0 +1,1 @@
+"""Appointment Board API package."""
