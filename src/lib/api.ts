@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const API_URL = (import.meta.env["VITE_API_URL"] || "https://team-agenda-backend.onrender.com/api").replace(
+export const API_URL = (import.meta.env["VITE_API_URL"] || "https://team-agenda-backend.onrender.com").replace(
   /\/$/,
   "",
 );
