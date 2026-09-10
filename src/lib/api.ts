@@ -70,7 +70,7 @@ export function fetchAppointments(filters: { date: string; status: string }) {
   if (filters.date) params.set("date", filters.date);
   if (filters.status !== "all") params.set("status", filters.status);
   const query = params.toString();
-  return request<Appointment[]>(`/appointments${query ? `?${query}` : ""}`);
+  return request<Appointment[]>(`/api/appointments${query ? `?${query}` : ""}`);
 }
 
 function toPayload(form: AppointmentForm) {
@@ -84,17 +84,17 @@ function toPayload(form: AppointmentForm) {
 }
 
 export function createAppointment(form: AppointmentForm) {
-  return request<Appointment>("/appointments", { method: "POST", body: JSON.stringify(toPayload(form)) });
+  return request<Appointment>("/api/appointments", { method: "POST", body: JSON.stringify(toPayload(form)) });
 }
 
 export function editAppointment(id: number, form: AppointmentForm) {
-  return request<Appointment>(`/appointments/${id}`, { method: "PUT", body: JSON.stringify(toPayload(form)) });
+  return request<Appointment>(`/api/appointments/${id}`, { method: "PUT", body: JSON.stringify(toPayload(form)) });
 }
 
 export function completeAppointment(id: number) {
-  return request<Appointment>(`/appointments/${id}/complete`, { method: "PATCH", body: JSON.stringify({}) });
+  return request<Appointment>(`/api/appointments/${id}/complete`, { method: "PATCH", body: JSON.stringify({}) });
 }
 
 export function cancelAppointment(id: number) {
-  return request<Appointment>(`/appointments/${id}/cancel`, { method: "PATCH", body: JSON.stringify({}) });
+  return request<Appointment>(`/api/appointments/${id}/cancel`, { method: "PATCH", body: JSON.stringify({}) });
 }
